@@ -6,27 +6,21 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import Navibar from './Components/navbar.js'
 import { useSelector, useDispatch } from 'react-redux'
-import {getPosts} from './Actions/posts.actions';
+import { getPosts } from './Actions/posts.actions';
 
 
 function App() {
-   
-const posts = useSelector(state=>state.postsReducer);
-const dark = useSelector(state => state.darkReducer);
-const bw = useSelector(state => state.bwReducer);
-
-
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
   useEffect(() => {
-    axios.get('https://api.tawwr.com/posts').then((response) => {dispatch(getPosts(response.data.data))})
+    axios.get('https://api.tawwr.com/posts').then((response) => { dispatch(getPosts(response.data.data)) })
   }, [])
 
   return (
-    <div className="App" style={{ backgroundColor: `${bw}` }}>
+    <div className="App">
       <Navibar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/post/:id' element={<PostDetails />} />
+        <Route path='Reddit-clone-react/' element={<Home />} />
+        <Route path='Reddit-clone-react/post/:id' element={<PostDetails />} />
       </Routes>
 
     </div>

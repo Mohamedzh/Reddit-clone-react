@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import {useFormik} from 'formik'
 import * as Yup from "yup";
-import { Modal, Button } from 'react-bootstrap'
 const Posts = () => {
     const formik = useFormik({
         initialValues: {
@@ -41,37 +40,4 @@ const Posts = () => {
     
   )
 }
-
-/*import axios from 'axios'
-import { useFormik } from "formik";
-import * as Yup from "yup";
-
-const Posts = () => {
-
-    const formik = useFormik({
-        initialValues: {
-          title: "",
-          body: "",
-        },
-        onSubmit: (values) => {console.log(values)
-      
-        },
-        validationSchema: Yup.object({
-          title: Yup.string().required("Title is required").max(80, "limit passed"),
-          userId: Yup.string().required("author is required").max(10, "limit passed"),
-          body: Yup.string().required("your message is required"),
-        }),
-      });
-    
-      return (
-       <form>
-          <input type="text" name="title" value={formik.values.title} onBlur={formik.handleBlur} onChange={formik.handleChange} />
-          <p>{(formik.errors.title && formik.touched.title) ? formik.errors.title : ""}</p>
-          <input type="text" name="body" value={formik.values.body} onBlur={formik.handleBlur} onChange={formik.handleChange}/>
-          <p>{(formik.errors.body && formik.touched.body) ? formik.errors.body : ""}</p>
-          <button onClick={formik.handleSubmit}></button>
-        </form>
-      )
-}
-*/
 export default Posts
