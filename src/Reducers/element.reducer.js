@@ -1,11 +1,11 @@
 
-const darkReducer = (state = "light", action) => {
+const elementReducer = (state = [], action) => {
     switch (action.type) {
-      case "DARK_THEME":
+      case "SEARCH":
         return action.payload;
       default:
         return state;
     }
   }
   
-  export default darkReducer
+  export default elementReducer
