@@ -1,14 +1,20 @@
+import { createSlice } from '@reduxjs/toolkit';
+import { Theme } from '../../types';
 
-const changeThemeReducer = (state = {
+const initialState: Theme = {
     background: "light",
     textColor: "dark",
     bg: "white",
     variant: "primary",
     themeBtn: "bi bi-moon-stars-fill",
     logo: "black",
-}, action) => {
-    switch (action.type) {
-        case "DARK_THEME":
+}
+
+const themeSlice = createSlice({
+    name: "theme",
+    initialState,
+    reducers: {
+        darkTheme: (state) => {
             return {
                 background: "dark",
                 textColor: "light",
@@ -16,10 +22,10 @@ const changeThemeReducer = (state = {
                 variant: "warning",
                 themeBtn: "bi bi-brightness-high-fill",
                 logo: "#D7DADC",
-
-            };
-        case "LIGHT_THEME":
-            return {
+            }
+        },
+        lightTheme: (state) => {
+            return  {
                 background: "light",
                 textColor: "dark",
                 bg: "white",
@@ -27,10 +33,10 @@ const changeThemeReducer = (state = {
                 themeBtn: "bi bi-moon-stars-fill",
                 logo: "black",
 
-            };
-        default:
-            return state;
+            }
+        }
     }
-}
+})
 
-export default changeThemeReducer
+export const { darkTheme, lightTheme } = themeSlice.actions
+export default themeSlice.reducer

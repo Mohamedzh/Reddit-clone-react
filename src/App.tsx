@@ -3,21 +3,22 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home';
 import PostDetails from './Pages/PostDetails';
 import { useEffect } from 'react'
-import axios from 'axios'
-import Navibar from './Components/navbar.js'
-import { useSelector, useDispatch } from 'react-redux'
-import { getPosts } from './Actions/posts.actions';
+import NavBar from './Components/navbar'
+import { useDispatch } from 'react-redux'
+import { getAllPosts, getAllTags } from './api'
+import React from 'react';
 
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    axios.get('https://api.tawwr.com/posts').then((response) => { dispatch(getPosts(response.data.data)) })
+    getAllPosts(dispatch)
+    getAllTags(dispatch)
   }, [])
 
   return (
     <div className="App">
-      <Navibar />
+      <NavBar />
       <Routes>
         <Route path='Reddit-clone-react/' element={<Home />} />
         <Route path='Reddit-clone-react/post/:id' element={<PostDetails />} />
