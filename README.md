@@ -29,7 +29,7 @@ To run this project, install it locally using npm:
 npm install
 npm start
 ```
-Or you can view a live example on github-pages [Here](https://mohamedzh.github.io/Reddit-clone-react/)
+Or you can view a live example on vercel [Here](https://reddit-clone-react-rose.vercel.app/)
 
 ![Homepage dark](/src/Components/Images/blog2.png)
 ![New post](/src/Components/Images/blog3.png)

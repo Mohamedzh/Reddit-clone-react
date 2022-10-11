@@ -23,7 +23,7 @@ const NavBar = () => {
 		<Navbar collapseOnSelect fixed="top" bg={themeObj.background} expand="lg" className="nav">
 			<Container>
 
-				<Link to='Reddit-clone-react/'>
+				<Link to='/'>
 					<span className="mx-2">
 						<BsReddit style={{ color: "red", height: '30px', width: '30px' }} />
 					</span>
@@ -33,20 +33,21 @@ const NavBar = () => {
 				</Link>
 
 				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-				{(location.pathname === "/Reddit-clone-react/" || location.pathname === "/Reddit-clone-react") && <div id="searchBar">
+				{location.pathname === "/" ? <div id="searchBar">
 					<Form.Control
 						type="text"
 						id="search"
 						name="search" placeholder='search by post title'
 						onChange={(e) => search(e.currentTarget.value, dispatch, posts)} />
-				</div>}
-				{(location.pathname !== "/Reddit-clone-react/" && location.pathname !== "/Reddit-clone-react") && <div id="searchBar">
-					<Form.Control
-						type="text"
-						id="search"
-						name="search" placeholder='search by comment'
-						onChange={(e) => searchComments(e.currentTarget.value, dispatch, posts, id)} />
-				</div>}
+				</div>
+					:
+					<div id="searchBar">
+						<Form.Control
+							type="text"
+							id="search"
+							name="search" placeholder='search by comment'
+							onChange={(e) => searchComments(e.currentTarget.value, dispatch, posts, id)} />
+					</div>}
 				<Navbar.Collapse className="justify-content-end">
 					<Navbar.Text className="p-1 mx-1">
 						<Button id="themeBtn" variant={themeObj.variant}

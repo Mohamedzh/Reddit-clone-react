@@ -20,8 +20,8 @@ function App() {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path='Reddit-clone-react/' element={<Home />} />
-        <Route path='Reddit-clone-react/post/:id' element={<PostDetails />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/post/:id' element={<PostDetails />} />
       </Routes>
 
     </div>
