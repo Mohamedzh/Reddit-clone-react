@@ -11,8 +11,8 @@ export const scrollToComments = () => {
 }
 
 export const switchTheme = (dispatch: Dispatch, themeObject: Theme) => {
-    { themeObject.background === "light" ? dispatch(darkTheme()) : dispatch(lightTheme()) };
-    { document.body.style.backgroundColor === "rgb(235, 235, 224)" ? document.body.style.backgroundColor = "black" : document.body.style.backgroundColor === "black" ? document.body.style.backgroundColor = "rgb(235, 235, 224)" : document.body.style.backgroundColor = "black" };
+    themeObject.background === "light" ? dispatch(darkTheme()) : dispatch(lightTheme());
+    document.body.style.backgroundColor === "rgb(235, 235, 224)" ? document.body.style.backgroundColor = "black" : document.body.style.backgroundColor === "black" ? document.body.style.backgroundColor = "rgb(235, 235, 224)" : document.body.style.backgroundColor = "black";
 }
 
 export const restoreTags = async (dispatch: Dispatch) => {
@@ -34,7 +34,7 @@ export const getAllComments = (dispatch: Dispatch, id: number, posts: Post[]) =>
     }
 }
 
-export const search = (searchedPhrase: string, dispatch:Dispatch, posts:Post[]) => {
+export const search = (searchedPhrase: string, dispatch: Dispatch, posts: Post[]) => {
     let filteredPosts = posts.filter(post => (post.title.toLowerCase()).includes(searchedPhrase.toLowerCase()))
     dispatch(getFilteredPosts(filteredPosts))
     if (searchedPhrase === "") {
@@ -42,7 +42,7 @@ export const search = (searchedPhrase: string, dispatch:Dispatch, posts:Post[]) 
     }
 }
 
-export const searchComments = (searchedPhrase: string, dispatch:Dispatch, posts:Post[], id:number) => {
+export const searchComments = (searchedPhrase: string, dispatch: Dispatch, posts: Post[], id: number) => {
     let currentPost = posts.find(post => post.id === id)
     if (currentPost) {
         let filteredComments = currentPost.comments.filter(comment => (comment.body.toLowerCase()).includes(searchedPhrase.toLowerCase()))

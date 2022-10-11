@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Comment, Post } from '../../types';
+import { Comment } from '../../types';
 
 const initialState: {
     comments: Comment[],
