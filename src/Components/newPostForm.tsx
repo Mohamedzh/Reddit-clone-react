@@ -22,11 +22,11 @@ const NewPostForm = ({ show, handleClose }: Props) => {
         initialValues: {
             title: "",
             body: "",
-            userId: NaN
+            userId: ""
         },
         onSubmit: (values) => {
             const tagIds = currentTags.map((tag: Tag) => tag.id)
-            const card = { id: Math.floor(Math.random() * 10), title: values.title, body: values.body, userId: values.userId, tagIds }
+            const card = { id: Math.floor(Math.random() * 10), title: values.title, body: values.body, userId: Number(values.userId), tagIds }
             newPostSubmit(dispatch, card);
             handleClose()
             formik.resetForm()
@@ -34,7 +34,7 @@ const NewPostForm = ({ show, handleClose }: Props) => {
         validationSchema: Yup.object({
             title: Yup.string().required("Please write a title").min(10, "Title should be more than 10 letters").max(40, "Title can't be more than 40 letters"),
             body: Yup.string().required("Please write your post content").min(10, "Title should be more than 10 letters"),
-            userId: Yup.string().required("Please enter your user id").max(1, "Please use a User Id from 0-9")
+            userId: Yup.number().required("Please enter your user id").max(9, "Please use a User Id from 0-9")
 
         }),
     });
@@ -74,8 +74,8 @@ const NewPostForm = ({ show, handleClose }: Props) => {
                             value={formik.values.userId}
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
-                            name="user id"
-                            placeholder='UserID'
+                            name="userId"
+                            placeholder='User ID'
                         />
                         <Form.Text className="text-muted">
                             <span style={{ color: "red" }}>
